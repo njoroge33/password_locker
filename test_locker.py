@@ -41,16 +41,25 @@ class TestCredential(unittest.TestCase):
     def setUp(self):
         self.new_credential = Credential("twitter", "lim33")
 
+    def tearDown(self):
+        Credential.credentials = []
+
     def test_init(self):
         self.assertEqual(self.new_credential.account_name, "twitter")
         self.assertEqual(self.new_credential.password, "lim33")
 
-    def test_create_credential(self):
-        self.new_credential.create_credential()
+    def test_save_credential(self):
+        self.new_credential.save_credential()
 
         self.assertEqual(len(Credential.credentials), 1)
 
-    
+    def test_save_multiple_credentials(self):
+        self.new_credential.save_credential()
+
+        self.new1_credential = Credential("facebook", "7fr")
+        self.new1_credential.save_credential()
+
+        self.assertEqual(len(Credential.credentials), 2)
 
     
 if __name__ == "__main__":
