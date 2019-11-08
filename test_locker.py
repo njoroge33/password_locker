@@ -37,7 +37,14 @@ class TestUser(unittest.TestCase):
         self.assertTrue(user_exists)
 
 
-      
+class TestCredential(unittest.TestCase):
+    def setUp(self):
+        self.new_credential = Credential("twitter", "lim33")
+
+    def test_init(self):
+        self.assertEqual(self.new_credential.account_name, "twitter")
+        self.assertEqual(self.new_credential.password, "lim33")
+
     
 if __name__ == "__main__":
     unittest.main()
