@@ -70,5 +70,10 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(found_contact.password, new2_credential.password)
 
+    def test_view_all_credentials(self):
+
+        self.assertEqual(Credential.view_all_credentials(), Credential.credentials)
+
+
 if __name__ == "__main__":
     unittest.main()
