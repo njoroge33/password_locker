@@ -1,17 +1,17 @@
-# import unittest
-# from locker import *
+import unittest
+from locker import *
 
 
-# class TestUser(unittest.TestCase):
-#     def setUp(self):
-#         self.new_user = User("njoroge", "lim66")
+class TestUser(unittest.TestCase):
+    def setUp(self):
+        self.new_user = User("njoroge", "lim66")
 
-#     def tearDown(self):
-#         User.users = []
+    def tearDown(self):
+        User.users = []
 
-#     def test_init(self):
-#         self.assertEqual(self.new_user.user_name, "njoroge")
-#         self.assertEqual(self.new_user.password, "lim66")
+    def test_init(self):
+        self.assertEqual(self.new_user.user_name, "njoroge")
+        self.assertEqual(self.new_user.password, "lim66")
 
 #     def test_create_account(self):
 #         self.new_user.create_account()
