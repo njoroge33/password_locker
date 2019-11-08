@@ -18,13 +18,13 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(len(users), 1)
 
-#     def test_create_multiple_accounts(self):
-#         self.new_user.create_account()
+    def test_create_multiple_accounts(self):
+        self.new_user.create_account()
 
-#         self.new1_user = User("jim", "7hh")
-#         self.new1_user.create_account()
+        self.new1_user = User("jim", "7hh")
+        self.new1_user.create_account()
 
-#         self.assertEqual(len(users), 2)
+        self.assertEqual(len(users), 2)
 
     
 
