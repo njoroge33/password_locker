@@ -16,7 +16,7 @@ class TestUser(unittest.TestCase):
     def test_create_account(self):
         self.new_user.create_account()
 
-        self.assertEqual(len(users), 1)
+        self.assertEqual(len(User.users), 1)
 
     def test_save_multiple_accounts(self):
         self.new_user.create_account()
@@ -24,7 +24,7 @@ class TestUser(unittest.TestCase):
         self.new1_user = User("jim", "7Hh")
         self.new1_user.create_account()
 
-        self.assertEqual(len(users), 2)
+        self.assertEqual(len(User.users), 2)
 
     def test_account_exists(self):
         self.new_user.create_account()
@@ -44,6 +44,13 @@ class TestCredential(unittest.TestCase):
     def test_init(self):
         self.assertEqual(self.new_credential.account_name, "twitter")
         self.assertEqual(self.new_credential.password, "lim33")
+
+    def test_create_credential(self):
+        self.new_credential.create_credential()
+
+        self.assertEqual(len(Credential.credentials), 1)
+
+    
 
     
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 class User:
     pass
-class Credentials:
+class Credential:
     pass
     
