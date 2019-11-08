@@ -68,11 +68,17 @@ class TestCredential(unittest.TestCase):
 
         found_credential = Credential.find_by_account_name("instagram")
 
-        self.assertEqual(found_contact.password, new2_credential.password)
+        self.assertEqual(found_credential.password, new2_credential.password)
 
     def test_view_all_credentials(self):
 
         self.assertEqual(Credential.view_all_credentials(), Credential.credentials)
+
+    def test_delete_credentials(self):
+        self.new_credential.save_credential()
+
+        self.new_credential.delete_credential()
+        self.assertEqual(len(Credential.credentials), 0)
 
 
 if __name__ == "__main__":
