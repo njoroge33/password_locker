@@ -13,10 +13,10 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.user_name, "njoroge")
         self.assertEqual(self.new_user.password, "lim66")
 
-#     def test_create_account(self):
-#         self.new_user.create_account()
+    def test_create_account(self):
+        self.new_user.create_account()
 
-#         self.assertEqual(len(users), 1)
+        self.assertEqual(len(users), 1)
 
 #     def test_create_multiple_accounts(self):
 #         self.new_user.create_account()
