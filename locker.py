@@ -1,4 +1,5 @@
-# class User:
-#     pass
-# class Credentials:
-#     pass
+class User:
+    pass
+class Credentials:
+    pass
+    
