@@ -61,6 +61,14 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(len(Credential.credentials), 2)
 
-    
+    def test_find_by_account_name(self):
+        self.new_credential.save_credential()
+        self.new2_credential = Credential("instagram", "harf")
+        new2_credential.save_credential()
+
+        found_credential = Credential.find_by_account_name("instagram")
+
+        self.assertEqual(found_contact.password, new2_credential.password)
+
 if __name__ == "__main__":
     unittest.main()
