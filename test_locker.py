@@ -11,25 +11,33 @@ class TestUser(unittest.TestCase):
 
     def test_init(self):
         self.assertEqual(self.new_user.user_name, "njoroge")
-        self.assertEqual(self.new_user.password, "lim66")
+        self.assertEqual(self.new_user.password, "liM66")
 
     def test_create_account(self):
         self.new_user.create_account()
 
         self.assertEqual(len(users), 1)
 
-    def test_create_multiple_accounts(self):
+    def test_save_multiple_accounts(self):
         self.new_user.create_account()
 
-        self.new1_user = User("jim", "7hh")
+        self.new1_user = User("jim", "7Hh")
         self.new1_user.create_account()
 
         self.assertEqual(len(users), 2)
 
-    
+    def test_account_exists(self):
+        self.new_user.create_account()
 
+        self.new2_user = User("john", "hey44")
+        self.new2_user.create_account()
+
+        user_exists = User.user_exist("john", "hey44")
+
+        self.assertTrue(user_exists)
+
+
+      
     
-        
-    
-# if __name__ == "__main__":
-#     unittest.main()
+if __name__ == "__main__":
+    unittest.main()
