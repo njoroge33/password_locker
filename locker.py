@@ -31,6 +31,10 @@ class Credential:
             if credential.account_name == account_name:
                 return credential
 
+    @classmethod
+    def view_all_credentials(cls):
+        return cls.credentials_list
+
     def delete_credential(self):
         Credential.credentials_list.remove(self)
     

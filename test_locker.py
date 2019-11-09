@@ -73,7 +73,7 @@ class TestCredential(unittest.TestCase):
 
     def test_view_all_credentials(self):
 
-        self.assertEqual(Credential.view_all_credentials(), Credential.credentials)
+        self.assertEqual(Credential.view_all_credentials(), Credential.credentials_list)
 
     def test_delete_credential(self):
         self.new_credential.save_credential()
