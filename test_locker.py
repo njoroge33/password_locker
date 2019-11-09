@@ -7,7 +7,7 @@ class TestUser(unittest.TestCase):
         self.new_user = User("njoroge", "lim66")
 
     def tearDown(self):
-        User.users = []
+        User.users_list = []
 
     def test_init(self):
         self.assertEqual(self.new_user.user_name, "njoroge")
@@ -16,7 +16,7 @@ class TestUser(unittest.TestCase):
     def test_create_account(self):
         self.new_user.create_account()
 
-        self.assertEqual(len(User.users), 1)
+        self.assertEqual(len(User.users_list), 1)
 
     def test_save_multiple_accounts(self):
         self.new_user.create_account()
@@ -24,7 +24,7 @@ class TestUser(unittest.TestCase):
         self.new1_user = User("jim", "7Hh")
         self.new1_user.create_account()
 
-        self.assertEqual(len(User.users), 2)
+        self.assertEqual(len(User.users_list), 2)
 
     def test_account_exists(self):
         self.new_user.create_account()
