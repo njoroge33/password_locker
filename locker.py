@@ -16,5 +16,7 @@ class User:
 
         return False
 class Credential:
-    pass
+    def __init__(self, account_name, password):
+        self.account_name = account_name
+        self.password = password
     
