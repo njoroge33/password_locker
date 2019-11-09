@@ -21,16 +21,16 @@ class TestUser(unittest.TestCase):
     def test_save_multiple_accounts(self):
         self.new_user.create_account()
 
-        self.new1_user = User("jim", "7Hh")
-        self.new1_user.create_account()
+        new1_user = User("jim", "7Hh")
+        new1_user.create_account()
 
         self.assertEqual(len(User.users_list), 2)
 
     def test_account_exists(self):
         self.new_user.create_account()
 
-        self.new2_user = User("john", "hey44")
-        self.new2_user.create_account()
+        new2_user = User("john", "hey44")
+        new2_user.create_account()
 
         user_exists = User.user_exist("john", "hey44")
 
@@ -42,7 +42,7 @@ class TestCredential(unittest.TestCase):
         self.new_credential = Credential("twitter", "lim33")
 
     def tearDown(self):
-        Credential.credentials = []
+        Credential.credentials_list = []
 
     def test_init(self):
         self.assertEqual(self.new_credential.account_name, "twitter")
@@ -51,19 +51,20 @@ class TestCredential(unittest.TestCase):
     def test_save_credential(self):
         self.new_credential.save_credential()
 
-        self.assertEqual(len(Credential.credentials), 1)
+        self.assertEqual(len(Credential.credentials_list), 1)
 
     def test_save_multiple_credentials(self):
         self.new_credential.save_credential()
 
-        self.new1_credential = Credential("facebook", "7fr")
-        self.new1_credential.save_credential()
+        new1_credential = Credential("facebook", "7fr")
+        new1_credential.save_credential()
 
-        self.assertEqual(len(Credential.credentials), 2)
+        self.assertEqual(len(Credential.credentials_list), 2)
 
     def test_find_by_account_name(self):
         self.new_credential.save_credential()
-        self.new2_credential = Credential("instagram", "harf")
+
+        new2_credential = Credential("instagram", "harf")
         new2_credential.save_credential()
 
         found_credential = Credential.find_by_account_name("instagram")
@@ -74,11 +75,11 @@ class TestCredential(unittest.TestCase):
 
         self.assertEqual(Credential.view_all_credentials(), Credential.credentials)
 
-    def test_delete_credentials(self):
+    def test_delete_credential(self):
         self.new_credential.save_credential()
 
         self.new_credential.delete_credential()
-        self.assertEqual(len(Credential.credentials), 0)
+        self.assertEqual(len(Credential.credentials_list), 0)
 
 
 if __name__ == "__main__":
