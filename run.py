@@ -1,5 +1,7 @@
 #!/usr/bin/env python3.6
 from locker import *
+import secrets
+import string
 
 def create_account(user_name, password):
     '''
@@ -43,6 +45,16 @@ def view_credential():
 
 def delete_credential():
     return Credential.delete_credential()
+
+def generate_password(pass_len):
+    '''
+    generate a new password
+    Args:
+    pass_len: preffered password length.
+    '''
+
+    return "".join(secrets.choice(string.ascii_letters+string.digits) for i in range(pass_len))
+
 
 def main():
     print("Hello! Welcome to One Pass")
@@ -124,14 +136,29 @@ def main():
             print("Username:")
             user_name = input()
 
-            print("passsword:")
-            passsword = input()
+            if user_name:
+                print("password:")
+                print("Would you like to automatically generate your password? y/n")
+                passs = input()
 
+                if passs == "y":
+                    print("Enter your preffered password length")
+                    pass_len = int(input())
+                    password = generate_password(pass_len)
+                    print(f"Your new password is {password}")
 
-            save_account(create_account(user_name, passsword))
-            
-            print(f"Account for {user_name} has been created")
-            print("\n")
+                elif passs == "n":
+                    print("Create your own password:")
+                    password = input()
+
+                else:
+                    print("Invalid choice!")
+
+                save_account(create_account(user_name, password))
+                print(f"Account for {user_name} has been created")
+                print("\n")
+            else:
+                print("Invalid Username")
 
 if __name__ == "__main__":
     main()
