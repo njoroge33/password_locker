@@ -3,6 +3,12 @@ from locker import *
 
 
 class TestUser(unittest.TestCase):
+    '''
+    Test class that defines test cases for the user class behaviours.
+
+    Args:
+        unittest.TestCase: TestCase class that helps in creating test cases
+    '''
     def setUp(self):
         self.new_user = User("njoroge", "lim66")
 
@@ -38,6 +44,12 @@ class TestUser(unittest.TestCase):
 
 
 class TestCredential(unittest.TestCase):
+    '''
+    Test class that defines test cases for the credential class behaviours.
+
+    Args:
+        unittest.TestCase: TestCase class that helps in creating test cases
+    '''
     def setUp(self):
         self.new_credential = Credential("twitter", "lim33")
 
