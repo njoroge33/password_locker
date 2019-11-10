@@ -73,10 +73,10 @@ def main():
             logged_in = login(user_name, password) if answer == 'l' else False
 
             while logged_in:
-                print("Use these short codes : cc - create a new credential, vc - view your credentials, fc -find a credential, lo -logout ")
+                print("Use these short codes : sc - save an already existing account credential, cc - create a new credential, vc - view your credentials, fc -find a credential, lo -logout ")
                 code = input()
 
-                if code == "cc":
+                if code == "sc":
                     print("Create new credential")
 
                     print("Enter the name of the account credential")
@@ -84,6 +84,32 @@ def main():
 
                     print("Enter the password of the account")
                     password = input()
+
+                    save_credential(create_credential(account_name, password))
+
+                    print(f"Account credentials for {account_name} has been saved")
+                    print("\n")
+
+                elif code == "cc":
+                    print("Enter the name of the account credential")
+                    account_name = input()
+
+                    print("Password:")
+                    print("Would you like to automatically generate your password? y/n")
+                    passs = input()
+
+                    if passs == "y":
+                        print("Enter your preffered password length")
+                        pass_len = int(input())
+                        password = generate_password(pass_len)
+                        print(f"Your new password for {account_name} is {password}")
+
+                    elif passs == "n":
+                        print("Create your own password:")
+                        password = input()
+
+                    else:
+                        print("Invalid choice!")
 
                     save_credential(create_credential(account_name, password))
 
@@ -138,22 +164,8 @@ def main():
 
             if user_name:
                 print("password:")
-                print("Would you like to automatically generate your password? y/n")
-                passs = input()
-
-                if passs == "y":
-                    print("Enter your preffered password length")
-                    pass_len = int(input())
-                    password = generate_password(pass_len)
-                    print(f"Your new password is {password}")
-
-                elif passs == "n":
-                    print("Create your own password:")
-                    password = input()
-
-                else:
-                    print("Invalid choice!")
-
+                password = input()
+        
                 save_account(create_account(user_name, password))
                 print(f"Account for {user_name} has been created")
                 print("\n")
