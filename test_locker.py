@@ -51,13 +51,14 @@ class TestCredential(unittest.TestCase):
         unittest.TestCase: TestCase class that helps in creating test cases
     '''
     def setUp(self):
-        self.new_credential = Credential("twitter", "lim33")
+        self.new_credential = Credential("twitter", "kamau", "lim33")
 
     def tearDown(self):
         Credential.credentials_list = []
 
     def test_init(self):
         self.assertEqual(self.new_credential.account_name, "twitter")
+        self.assertEqual(self.new_credential.user_name, "kamau")
         self.assertEqual(self.new_credential.password, "lim33")
 
     def test_save_credential(self):
@@ -68,7 +69,7 @@ class TestCredential(unittest.TestCase):
     def test_save_multiple_credentials(self):
         self.new_credential.save_credential()
 
-        new1_credential = Credential("facebook", "7fr")
+        new1_credential = Credential("facebook", "njoroge33", "7fr")
         new1_credential.save_credential()
 
         self.assertEqual(len(Credential.credentials_list), 2)
@@ -76,7 +77,7 @@ class TestCredential(unittest.TestCase):
     def test_find_by_account_name(self):
         self.new_credential.save_credential()
 
-        new2_credential = Credential("instagram", "harf")
+        new2_credential = Credential("instagram", "john", "harf")
         new2_credential.save_credential()
 
         found_credential = Credential.find_by_account_name("instagram")

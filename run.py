@@ -23,12 +23,12 @@ def login(user_name, password):
     '''
     return User.user_exist(user_name, password)
 
-def create_credential(account_name, password):
+def create_credential(account_name, user_name, password):
 
     '''
     Function to create a new credential
     '''
-    new_credential = Credential(account_name, password)
+    new_credential = Credential(account_name, user_name, password)
     return new_credential
 
 def save_credential(credential):
@@ -82,10 +82,13 @@ def main():
                     print("Enter the name of the account credential")
                     account_name = input()
 
+                    print("Enter the account credential username")
+                    user_name = input()
+
                     print("Enter the password of the account")
                     password = input()
 
-                    save_credential(create_credential(account_name, password))
+                    save_credential(create_credential(account_name, user_name, password))
 
                     print(f"Account credentials for {account_name} has been saved")
                     print("\n")
@@ -93,6 +96,10 @@ def main():
                 elif code == "cc":
                     print("Enter the name of the account credential")
                     account_name = input()
+
+                    print("Enter the account credential username")
+                    user_name = input()
+
 
                     print("Password:")
                     print("Would you like to automatically generate your password? y/n")
@@ -111,7 +118,7 @@ def main():
                     else:
                         print("Invalid choice!")
 
-                    save_credential(create_credential(account_name, password))
+                    save_credential(create_credential(account_name, user_name, password))
 
                     print(f"Account credentials for {account_name} has been saved")
                     print("\n")
@@ -123,6 +130,7 @@ def main():
 
                         for credential in view_credential():
                             print(f"Account Name ..... {credential.account_name}")
+                            print(f"User Name ..... {credential.user_name}")
                             print(f"Password   .....   {credential.password}")
                             print('\n')
                     else:
@@ -136,7 +144,7 @@ def main():
                     name= input()
                     found_credential = find_credential(name)
                     if found_credential:
-                        print(f"Your password for your {found_credential.account_name} account is {found_credential.password}")
+                        print(f"Your username for your {found_credential.account_name} account is {found_credential.user_name} and it's password is {found_credential.password}")
                         print("\n")
                 
                 
