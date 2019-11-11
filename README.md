@@ -44,7 +44,7 @@ As a user I would like:
 ## Testing the Application
 * To run the tests for the class file:
 
-        $ python3.7 test_locker.py
+        $ python3.6 test_locker.py
         
 ## Technologies Used
 * Python3.6
